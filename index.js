@@ -22,8 +22,8 @@ var app = http.createServer(function(req, res) {
 var io = require('socket.io')(app);
 	io.on('connection', function(socket){
 		socket.on('NameMessage', function(msg){
-			msg = JSON.parse(send);
-			console.log('сообщение: ' + msg);
+			console.log(msg.name + ' сказал: ' + msg.message);
+			io.emit('chat name', name);
 
 		});
 

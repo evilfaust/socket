@@ -1,0 +1,9 @@
+{
+  "name": "socket.io-chat-from FAusT",
+  "version": "0.0.0",
+  "description": "Совершенно не большой чатик на socket.io",
+  "main": "index.js",
+  "author": "EvilFAusT",
+  "private": true,
+  "license": "BSD",
+}
