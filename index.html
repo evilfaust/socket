@@ -18,21 +18,50 @@
 </head>
 <body>
 <ul id="messages"></ul>
-<form action="">
-    <input id="m" autocomplete="off" /><button>Send</button>
+<form id="forma" action="">
+    <input id="name"/><input id="m" autocomplete="off" /><button>Send</button>
 </form>
 
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
-  var socket = io();
-  $('form').submit(function(){
-    socket.emit('chat message', $('#m').val());
-    $('#m').val('');
+var socket = io();
+
+forma.onsubmit = function(){
+    var name = this.elements.name.value;
+    var message = this.elements.m.value;
+        var send = {
+          name: name,
+          message: message
+        };
+
+    // var sends = JSON.stringify(send);
+    socket.emit('NameMessage', send);
     return false;
-  });
-  socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
-  });
+};  
+
+  //   publish.onsubmit(function(){
+  //   var name = this.elements.name.value;
+  //   var message = this.elements.m.value;
+  //   var send = {
+  //     name: name,
+  //     message: message
+  //   };
+
+  //   var sends = JSON.stringify(send);
+  //   socket.emit('NameMessage', sends);
+  //   return false;
+  // });
+
+
+  // var socket = io();
+  // $('form').submit(function(){
+  //   socket.emit('chat message', $('#m').val());
+  //   $('#m').val('');
+  //   return false;
+  // });
+  // socket.on('chat message', function(msg){
+  //       $('#messages').append($('<li>').text(msg));
+  // });
 </script>
 
 </body>
